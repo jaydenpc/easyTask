@@ -9,12 +9,42 @@ import { TaskComponent } from './task/task.component';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-  @Input() name?: string;
+  @Input({required: true}) name!: string;
+  @Input({required: true}) userId!: string;
+
+  tasks = [
+    {
+      id: 't1',
+      userId: 'u1',
+      title: 'master angular',
+      summary: 'learn all the basic and advanced concepts of angular',
+      dueDate: '12-12-2024',
+    },
+     {
+      id: 't2',
+      userId: 'u3',
+      title: 'build first prototype',
+      summary: 'learn all the basic and advanced concepts of angular',
+      dueDate: '10-12-2024',
+    },
+     {
+      id: 't3',
+      userId: 'u3',
+      title: 'prepare template',
+      summary: 'learn all the basic and advanced concepts of angular',
+      dueDate: '12-10-2024',
+    },
+  ];
+
+  get selectedUserTasks() {
+    return this.tasks.filter((task) => task.userId === this.userId);
+  }
+
 
 
   
 
 
-  //DUMMY_USERS.find(user => user.id === selectedUserId);
+  
 
 }
